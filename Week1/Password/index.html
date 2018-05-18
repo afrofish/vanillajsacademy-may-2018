@@ -46,28 +46,31 @@
             <button type="submit">Change Password</button>
         </form>
 
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+	    <script>
+	        // Listen for clicks on the entire window
+	        window.addEventListener('click', function (event) {
+
+	            // If the clicked element has the `.showPassword` class, it's a match!
+	            if (event.target.classList.contains('showPassword')) {
+	                // Get all elements with the .bg-red class
+	                var elemsPasswordField = document.querySelectorAll('.passwordField');
+	                
+	                elemsPasswordField.forEach(function (elem, index) {
+	                    var txtType = elem.getAttribute( 'type');
+	                    if (txtType==='password') {
+	                        elem.setAttribute('type', 'text');
+	                    } else {
+	                        elem.setAttribute('type', 'password');
+	                    }
+	                });
+
+	            }
+
+	        }, false);
+
+	    </script>
+
     </body>
-    <script>
-        // Listen for clicks on the entire window
-        window.addEventListener('click', function (event) {
 
-            // If the clicked element has the `.showPassword` class, it's a match!
-            if (event.target.classList.contains('showPassword')) {
-                // Get all elements with the .bg-red class
-                var elemsPasswordField = document.querySelectorAll('.passwordField');
-                
-                elemsPasswordField.forEach(function (elem, index) {
-                    var txtType = elem.getAttribute( 'type');
-                    if (txtType==='password') {
-                        elem.setAttribute('type', 'text');
-                    } else {
-                        elem.setAttribute('type', 'password');
-                    }
-                });
-
-            }
-
-        }, false);
-
-    </script>
 </html>
