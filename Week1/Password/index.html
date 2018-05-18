@@ -1,0 +1,73 @@
+<html>
+    <head></head>
+    <body>
+        <h2>Log In</h2>
+        <form>
+            <div>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username">
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" value="testval" class="passwordField">
+            </div>
+
+            <div>
+                <label class="no-bold" for="show-passwords">
+                    <input type="checkbox" name="show-passwords" id="show-passwords" class="showPassword">
+                    Show password
+                </label>
+            </div>
+
+            <button type="submit">Log In</button>
+        </form>
+
+
+        <h2>Update Password</h2>
+        <form>
+            <div>
+                <label for="current-pw">Current Password</label>
+                <input type="password" name="current-pw" id="current-pw" class="passwordField" value="textVal">
+            </div>
+
+            <div>
+                <label for="new-pw">New Password</label>
+                <input type="password" name="new-pw" id="new-pw" class="passwordField" value="textVal">
+            </div>
+
+            <div>
+                <label class="no-bold" for="show-password">
+                    <input type="checkbox" name="show-password" id="show-password" class="showPassword">
+                    Show passwords
+                </label>
+            </div>
+
+            <button type="submit">Change Password</button>
+        </form>
+
+    </body>
+    <script>
+        // Listen for clicks on the entire window
+        window.addEventListener('click', function (event) {
+
+            // If the clicked element has the `.showPassword` class, it's a match!
+            if (event.target.classList.contains('showPassword')) {
+                // Get all elements with the .bg-red class
+                var elemsPasswordField = document.querySelectorAll('.passwordField');
+                
+                elemsPasswordField.forEach(function (elem, index) {
+                    var txtType = elem.getAttribute( 'type');
+                    if (txtType==='password') {
+                        elem.setAttribute('type', 'text');
+                    } else {
+                        elem.setAttribute('type', 'password');
+                    }
+                });
+
+            }
+
+        }, false);
+
+    </script>
+</html>

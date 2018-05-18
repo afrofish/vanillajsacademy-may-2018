@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form id="say-hi">
+	    <label for="name">What's your name?</label>
+	    <input type="input" id="name">
+	    <button>Say Hi</button>
+	</form>
+</body>
+</html>
+
+<script>
+	// Listen for form submissions
+	document.addEventListener('submit', function (e) {
+
+	    // If the form is our say hi form
+	    if (e.target.id === 'say-hi') {
+	        // Prevent the form from submitting
+	        e.preventDefault();
+
+
+	        var elem = e.target.querySelector('#name');
+	        alert('Hello, ' + elem.value + '!');
+	    }
+
+	}, false);
+
+</script>
