@@ -138,25 +138,28 @@
                 elemC = document.querySelector( '#celcius' );
                 newTempF = elemF.value;
                 newTempC = elemC.value;
+                console.log(tempF + "," + newTempF + ";" + tempC + "," + newTempC);
                 if (newTempF !== tempF) {
+                    console.log("In F");
                     newTempC = Math.round((newTempF - 32) * 5/9);
                     elemC.setAttribute('value',newTempC);
                 }
 
                 if (newTempC !== tempC) {
+                    console.log("In C");
                     newTempF = Math.round((newTempC * 9/5) + 32);
                     elemF.setAttribute('value',newTempF);
                 }
                 
-                tempF = newTempF;
-                tempC = newTempC;
+                //tempF = newTempF;
+                //tempC = newTempC;
 
             }
         }, false);
 
         // Load values at startup
-        tempF = document.querySelector( '#farenheit' );
-        tempC = document.querySelector( '#celcius' );
+        tempF = document.querySelector( '#farenheit' ).value;
+        tempC = document.querySelector( '#celcius' ).value;
         //alert ("F:" + tempF.value + " C:" + tempC.value);
 
     </script>
