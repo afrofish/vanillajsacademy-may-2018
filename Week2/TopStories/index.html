@@ -1,0 +1,83 @@
+<!-- 00675217e5be4ca7bc8891b62a05af7b 
+
+https://api.nytimes.com/svc/topstories/v2/{section_name}.json?api-key=1234_my_api_key_5678
+-->
+<html>
+<head>
+	
+	<h1>What to read today</h1>
+
+	<div id="app"></div>
+</head>
+<body>
+	
+</body>
+
+<script type="text/javascript">
+	
+	var makeRequest = function (url, method, success, fail, always) {
+		// Make sure a URL and method were provided
+		if (!url || !method) return;
+
+		// Set up our HTTP request
+		var xhr = new XMLHttpRequest();
+
+		// Setup our listener to process completed request
+		xhr.onload = function() {
+			// Process our return data
+			if (xhr.status >= 200 && xhr.status < 300) {
+				// Run the success callback
+				if (success && typeof success === 'function') {
+					success(JSON.parse(xhr.responseText), xhr);
+				}
+			} else {
+				// Run the failure callback
+				if (failure && typeof failure === 'function') {
+					failure(xhr);
+				}
+			}
+
+			if (always && typeof always === 'function') {
+				failure(xhr);
+			}
+		}
+		xhr.open(method, url);
+		xhr.send();
+
+	}
+
+	makeRequest('https://api.nytimes.com/svc/topstories/v2/home.json?api-key=00675217e5be4ca7bc8891b62a05af7b', 'GET', function(post) {
+	var elem = document.querySelector('#some-elem');
+		console.log(post);
+	});
+/*
+home
+opinion
+world
+national
+politics
+upshot
+nyregion
+business
+technology
+science
+health
+sports
+arts
+books
+movies
+theater
+sundayreview
+fashion
+tmagazine
+food
+travel
+magazine
+realestate
+automobiles
+obituaries
+insider
+*/
+
+</script>
+</html>

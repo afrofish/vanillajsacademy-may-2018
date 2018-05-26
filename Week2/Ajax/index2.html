@@ -1,0 +1,54 @@
+<html>
+	<head></head>
+	<body>
+		<h1>Really?</h1>
+	</body>
+
+<script>
+
+	var makeRequest = function (url, method, success, fail, always) {
+		// Make sure a URL and method were provided
+		if (!url || !method) return;
+
+		// Set up our HTTP request
+		var xhr = new XMLHttpRequest();
+
+		// Setup our listener to process completed request
+		xhr.onload = function() {
+			// Process our return data
+			if (xhr.status >= 200 && xhr.status < 300) {
+				// Run the success callback
+				if (success && typeof success === 'function') {
+					success(JSON.parse(xhr.responseText), xhr);
+				}
+			} else {
+				// Run the failure callback
+				if (failure && typeof failure === 'function') {
+					failure(xhr);
+				}
+			}
+
+			if (always && typeof always === 'function') {
+				failure(xhr);
+			}
+		}
+		xhr.open(method, url);
+		xhr.send();
+
+	}
+
+
+
+//	makeRequest('https://jsonplaceholder.typicode.com/posts', 'GET', function(posts) {
+//		posts.forEach(function(post) {
+//			console.log(post);
+//		})
+//	});
+	
+	makeRequest('https://jsonplaceholder.typicode.com/posts/4', 'GET', function(post) {
+
+			console.log(post);
+		
+	});
+</script>
+</html>
